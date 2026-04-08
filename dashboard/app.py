@@ -156,7 +156,7 @@ with tab1:
         )
         fig.update_traces(texttemplate="%{x:.1f} jt", textposition="outside")
         fig.update_layout(margin=dict(l=0,r=60,t=10,b=30), legend_title="Pulau")
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with c2:
         st.subheader("Distribusi per Gugus Pulau")
@@ -168,7 +168,7 @@ with tab1:
         )
         fig2.update_traces(textinfo="label+percent", textfont_size=11)
         fig2.update_layout(showlegend=False, margin=dict(l=10,r=10,t=10,b=10))
-        st.plotly_chart(fig2, use_container_width=True)
+        st.plotly_chart(fig2, width="stretch")
 
         # Gini
         st.info(f"**Koefisien Gini**: {gini_val:.3f}\n\nKetimpangan distribusi antar provinsi **{'tinggi' if gini_val > 0.5 else 'sedang'}**.\n\n> Interpretasi: 0 = merata sempurna · 1 = sangat timpang")
@@ -186,7 +186,7 @@ with tab1:
             "laju_pertumbuhan_pct_2026": "Laju Tumbuh (%)",
             "rasio_jenis_kelamin_2026": "Rasio JK"
         }).reset_index(drop=True),
-        use_container_width=True, height=350
+        width="stretch", height=350
     )
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -235,7 +235,7 @@ with tab2:
             yaxis_range=[0.5, 3.8], height=380,
             margin=dict(l=0,r=0,t=20,b=0), legend=dict(orientation="h", y=1.1)
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with c2:
         st.subheader("Laju 2020–2024 per Pulau")
@@ -249,7 +249,7 @@ with tab2:
         fig2.add_hline(y=df_f["laju_2020_2024"].median(), line_dash="dot",
                        line_color="red", annotation_text="Median nasional")
         fig2.update_layout(showlegend=False, margin=dict(l=0,r=0,t=20,b=0))
-        st.plotly_chart(fig2, use_container_width=True)
+        st.plotly_chart(fig2, width="stretch")
 
     st.subheader("Ranking Laju Pertumbuhan 2020–2024")
     laju_sorted = df_f.dropna(subset=["laju_2020_2024"]).sort_values("laju_2020_2024", ascending=False)
@@ -260,7 +260,7 @@ with tab2:
         height=900
     )
     fig3.update_layout(margin=dict(l=0,r=40,t=10,b=0), legend_title="Pulau")
-    st.plotly_chart(fig3, use_container_width=True)
+    st.plotly_chart(fig3, width="stretch")
 
 # ══════════════════════════════════════════════════════════════════════════════
 # TAB 3 — INDIKATOR VITAL
@@ -281,7 +281,7 @@ with tab3:
         fig.add_vline(x=imr_s["imr_per1000_2020"].median(), line_dash="dot",
                       line_color="gray", annotation_text="Median")
         fig.update_layout(showlegend=False, margin=dict(l=0,r=40,t=10,b=0))
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with c2:
         st.subheader("TFR vs IMR — Pola Transisi Demografi")
@@ -294,7 +294,7 @@ with tab3:
             trendline="ols", height=400
         )
         fig2.update_layout(margin=dict(l=0,r=0,t=10,b=0), legend_title="Pulau")
-        st.plotly_chart(fig2, use_container_width=True)
+        st.plotly_chart(fig2, width="stretch")
 
         st.subheader("CBR per 1.000 Penduduk per Pulau")
         cbr_df = df_f.dropna(subset=["cbr_per1000_2020"])
@@ -305,7 +305,7 @@ with tab3:
             height=300
         )
         fig3.update_layout(showlegend=False, margin=dict(l=0,r=0,t=10,b=0))
-        st.plotly_chart(fig3, use_container_width=True)
+        st.plotly_chart(fig3, width="stretch")
 
 # ══════════════════════════════════════════════════════════════════════════════
 # TAB 4 — ANALISIS STATISTIK
@@ -329,7 +329,7 @@ with tab4:
             hovertemplate="r = %{z:.3f}"
         ))
         fig.update_layout(height=420, margin=dict(l=0,r=0,t=10,b=0))
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with c2:
         st.subheader("Uji-T: Jawa vs Luar Jawa")
@@ -361,7 +361,7 @@ with tab4:
                 height=280
             )
             fig_v.update_layout(showlegend=False, margin=dict(l=0,r=0,t=10,b=0))
-            st.plotly_chart(fig_v, use_container_width=True)
+            st.plotly_chart(fig_v, width="stretch")
 
     st.markdown("---")
     st.subheader("Statistik Deskriptif Extended")
@@ -375,14 +375,14 @@ with tab4:
         "Statistik": ["N","Mean","Median","Std Dev","Min","Max",
                       "CV (%)","Skewness","Kurtosis","Shapiro-Wilk p"],
         "Nilai": [
-            len(v), f"{v.mean():.4f}", f"{v.median():.4f}", f"{v.std():.4f}",
+            str(len(v)), f"{v.mean():.4f}", f"{v.median():.4f}", f"{v.std():.4f}",
             f"{v.min():.4f}", f"{v.max():.4f}",
             f"{v.std()/v.mean()*100:.2f}", f"{stats.skew(v):.4f}",
             f"{stats.kurtosis(v):.4f}", f"{sw_p:.4f}" if sw_p else "—"
         ]
     }
     c1, c2 = st.columns([1, 1.5])
-    c1.dataframe(pd.DataFrame(desc_data), use_container_width=True, hide_index=True)
+    c1.dataframe(pd.DataFrame(desc_data), width="stretch", hide_index=True)
     with c2:
         fig_hist = px.histogram(
             df_f.dropna(subset=[sel_col]), x=sel_col, color="pulau",
@@ -391,7 +391,7 @@ with tab4:
             height=300
         )
         fig_hist.update_layout(margin=dict(l=0,r=0,t=10,b=0), legend_title="Pulau")
-        st.plotly_chart(fig_hist, use_container_width=True)
+        st.plotly_chart(fig_hist, width="stretch")
 
 # ─── Footer ───────────────────────────────────────────────────────────────────
 st.markdown("---")
