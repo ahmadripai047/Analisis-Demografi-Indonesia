@@ -41,14 +41,14 @@ dari Sensus Penduduk 2020 (SP2020) dan proyeksi BPS 2026.
 ```
 demografi-indonesia/
 ├── data/
-│   ├── raw/           ← Data asli BPS (jangan diubah)
+│   ├── raw/           ← Data asli dari BPS 
 │   └── processed/     ← Data hasil cleaning
 ├── notebooks/
 │   ├── 01_cleaning.ipynb       ← Data wrangling & standarisasi
 │   ├── 02_eda.ipynb            ← Statistik deskriptif & uji hipotesis
-│   └── 03_visualisasi.ipynb   ← 6 visualisasi berkualitas publikasi
+│   └── 03_visualisasi.ipynb   ← 6 visualisasi
 ├── dashboard/
-│   └── app.py         ← Dashboard Streamlit interaktif
+│   └── app.py         ← Dashboard Streamlit
 ├── output/
 │   └── figures/       ← Grafik hasil analisis (.png)
 ├── README.md
