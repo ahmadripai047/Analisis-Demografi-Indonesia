@@ -1,0 +1,40 @@
+nama_kolom,tipe_data,satuan,tahun_data,sumber_file,keterangan
+## INFORMASI DATASET,,,,,
+nama_dataset,string,-,-,-,demografi_provinsi_indonesia_merged.csv
+jumlah_baris,integer,-,-,-,45 (38 provinsi + 4 provinsi Papua baru + 3 baris agregat/lainnya)
+jumlah_kolom,integer,-,-,-,26
+unit_analisis,string,-,-,-,Provinsi (tingkat provinsi Indonesia)
+cakupan_wilayah,string,-,-,-,Seluruh Indonesia (38 provinsi)
+rentang_waktu,string,-,-,-,1971–2026 (data laju); 2020 (SP2020 indicators); 2021 & 2026 (kepadatan & proyeksi)
+sumber_utama,string,-,-,-,Badan Pusat Statistik (BPS) Indonesia — bps.go.id
+tanggal_unduh,string,-,-,-,April 2026
+dibuat_oleh,string,-,-,-,Diolah dari 9 file CSV BPS menggunakan Python/Pandas
+catatan_missing,string,-,-,-,"NaN pada kolom SP2020 untuk 4 provinsi pemekaran Papua (Papua Barat Daya, Papua Pegunungan, Papua Selatan, Papua Tengah) karena dibentuk setelah SP2020"
+,,,,,
+## KAMUS DATA,,,,,
+id,integer,-,-,-,Nomor urut baris
+provinsi,string,-,-,Semua file,"Nama provinsi (uppercase, standar BPS)"
+jumlah_penduduk_ribu_2026,float,Ribu jiwa,2026,Penduduk_Laju...Provinsi_2026.csv,Jumlah penduduk proyeksi pertengahan tahun 2026
+laju_pertumbuhan_pct_2026,float,% per tahun,2026,Penduduk_Laju...Provinsi_2026.csv,Laju pertumbuhan penduduk per tahun (proyeksi 2026)
+distribusi_pct_2026,float,%,2026,Penduduk_Laju...Provinsi_2026.csv,Persentase distribusi penduduk terhadap total nasional
+kepadatan_per_km2_2026,float,Jiwa/km²,2026,Penduduk_Laju...Provinsi_2026.csv,Kepadatan penduduk per km persegi (proyeksi 2026)
+rasio_jenis_kelamin_2026,float,Laki-laki per 100 perempuan,2026,Penduduk_Laju...Provinsi_2026.csv,Rasio jenis kelamin (sex ratio) penduduk
+kepadatan_per_km2_2021,integer,Jiwa/km²,2021,Kepadatan_Penduduk...2021.csv,Kepadatan penduduk per km persegi tahun 2021; NaN = provinsi pemekaran baru
+laju_1971_1980,float,% per tahun,1971–1980,Rata-rata_Laju...1971-2024.csv,Rata-rata laju pertumbuhan penduduk periode 1971–1980
+laju_1980_1990,float,% per tahun,1980–1990,Rata-rata_Laju...1971-2024.csv,Rata-rata laju pertumbuhan penduduk periode 1980–1990
+laju_1990_2000,float,% per tahun,1990–2000,Rata-rata_Laju...1971-2024.csv,Rata-rata laju pertumbuhan penduduk periode 1990–2000
+laju_2000_2010,float/string,% per tahun,2000–2010,Rata-rata_Laju...1971-2024.csv,Rata-rata laju pertumbuhan penduduk periode 2000–2010; beberapa nilai mengandung catatan kaki
+laju_2010_2016,float,% per tahun,2010–2016,Rata-rata_Laju...1971-2024.csv,Rata-rata laju pertumbuhan penduduk periode 2010–2016
+laju_2010_2017,float,% per tahun,2010–2017,Rata-rata_Laju...1971-2024.csv,Rata-rata laju pertumbuhan penduduk periode 2010–2017
+laju_2010_2018,float,% per tahun,2010–2018,Rata-rata_Laju...1971-2024.csv,Rata-rata laju pertumbuhan penduduk periode 2010–2018
+laju_2010_2019,float,% per tahun,2010–2019,Rata-rata_Laju...1971-2024.csv,Rata-rata laju pertumbuhan penduduk periode 2010–2019
+laju_2010_2020,float,% per tahun,2010–2020,Rata-rata_Laju...1971-2024.csv,Rata-rata laju pertumbuhan penduduk periode 2010–2020 (antar-Sensus)
+laju_2020_2021,float,% per tahun,2020–2021,Rata-rata_Laju...1971-2024.csv,Rata-rata laju pertumbuhan penduduk periode 2020–2021
+laju_2020_2022,float,% per tahun,2020–2022,Rata-rata_Laju...1971-2024.csv,Rata-rata laju pertumbuhan penduduk periode 2020–2022
+laju_2020_2023,float,% per tahun,2020–2023,Rata-rata_Laju...1971-2024.csv,Rata-rata laju pertumbuhan penduduk periode 2020–2023 (mengandung catatan kaki 3)
+laju_2020_2024,float,% per tahun,2020–2024,Rata-rata_Laju...1971-2024.csv,Rata-rata laju pertumbuhan penduduk periode 2020–2024 (mengandung catatan kaki 4)
+u5mr_per1000_2020,float,Per 1.000 kelahiran hidup,2020,Angka_Kematian_Balita...SP2020.csv,Under-Five Mortality Rate (U5MR) — Angka Kematian Balita hasil Long Form SP2020; NaN = provinsi pemekaran setelah 2020
+cbr_per1000_2020,float,Per 1.000 penduduk,2020,Angka_Kelahiran_Kasar...SP2020.csv,Crude Birth Rate (CBR) — Angka Kelahiran Kasar hasil Long Form SP2020; NaN = data tidak tersedia
+tfr_2020,float,Anak per wanita,2020,Angka_Kelahiran_Total_TFR...SP2020.csv,Total Fertility Rate (TFR) — Angka Kelahiran Total hasil Long Form SP2020; NaN = data tidak tersedia
+imr_per1000_2020,float,Per 1.000 kelahiran hidup,2020,Angka_Kematian_Bayi_IMR...SP2020.csv,Infant Mortality Rate (IMR) — Angka Kematian Bayi hasil Long Form SP2020; NaN = data tidak tersedia
+catatan,string,-,-,-,Catatan kualitas data untuk baris tersebut
