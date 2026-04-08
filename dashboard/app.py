@@ -81,15 +81,25 @@ def load_data(path: str) -> pd.DataFrame:
     return df
 
 # ─── Load ─────────────────────────────────────────────────────────────────────
-DATA_PATH = "../data/processed/demografi_clean.csv"
+import os
+BASE_DIR  = os.path.dirname(os.path.abspath(__file__))
+ROOT_DIR  = os.path.dirname(BASE_DIR)
+DATA_PATH = os.path.join(ROOT_DIR, "data", "processed", "demografi_clean.csv")
+RAW_PATH  = os.path.join(ROOT_DIR, "data", "raw", "demografi_provinsi_indonesia_merged.csv")
+
 try:
     df = load_data(DATA_PATH)
 except FileNotFoundError:
-    # Fallback ke raw jika processed belum ada
-    RAW = "../data/raw/demografi_provinsi_indonesia_merged.csv"
-    df_raw = pd.read_csv(RAW)
-    df_raw.to_csv(DATA_PATH.replace("processed/demografi_clean.csv","processed/demografi_clean.csv"), index=False)
-    df = load_data(RAW)
+    try:
+        df = load_data(RAW_PATH)
+    except FileNotFoundError:
+        st.error(
+            "❌ **File data tidak ditemukan.**\n\n"
+            "Pastikan salah satu file berikut ada di repository:\n"
+            "- `data/processed/demografi_clean.csv`\n"
+            "- `data/raw/demografi_provinsi_indonesia_merged.csv`"
+        )
+        st.stop()
 
 # ─── Sidebar ──────────────────────────────────────────────────────────────────
 with st.sidebar:
