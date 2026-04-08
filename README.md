@@ -1,4 +1,5 @@
 # 📊 Analisis Demografi Provinsi Indonesia
+👉 [Klik di sini untuk melihat Dashboard](https://demografi-indonesia-analytifai.streamlit.app/)
 
 > Proyek portofolio analisis data kependudukan berbasis data resmi BPS Indonesia,  
 > mencakup data cleaning, eksplorasi statistik, visualisasi, dan dashboard interaktif.
