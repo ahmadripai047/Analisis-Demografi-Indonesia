@@ -16,7 +16,7 @@ dari Sensus Penduduk 2020 (SP2020) dan proyeksi BPS 2026.
 
 ## Pertanyaan Penelitian
 
-1. Bagaimana distribusi penduduk antar provinsi — seberapa timpang?
+1. Bagaimana distribusi penduduk antar provinsi dan seberapa timpang?
 2. Apakah laju pertumbuhan penduduk memiliki tren menurun?
 3. Apakah provinsi Jawa dan Luar Jawa memiliki laju pertumbuhan yang berbeda secara signifikan?
 4. Bagaimana disparitas indikator kesehatan (IMR, TFR, CBR) antar wilayah?
